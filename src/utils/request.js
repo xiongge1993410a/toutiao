@@ -84,7 +84,16 @@ request.interceptors.response.use(function (response) {
 })
 
 function redirectLogin() {
-  router.replace('/login')
+  // router.replace('/login')
+  router.replace({
+    name: 'login',
+    // 查询参数会以 ? 号作为分隔符放到 url 后面
+    // router.currentRoute 等价于组件中的 this.$route
+    // router.currentRoute.fullPath 就是当前路由路径
+    query: {
+      redirect: router.currentRoute.fullPath
+    }
+  })
 }
 
 export default request
