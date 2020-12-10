@@ -112,6 +112,8 @@ export default {
         this.$store.commit('setUser', data.data)
         this.$toast.success('登录成功')
         // 跳转回原来的页面
+        // 清除 LayoutIndex 缓存，重新渲染
+        this.$store.commit('removeCachePage', 'LayoutIndex')
         // this.$router.back()
         this.$router.push(this.$route.query.redirect || '/')
       } catch (err) {
